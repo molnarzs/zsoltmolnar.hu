@@ -7,6 +7,7 @@ import PostsSection from '@/sections/PostsSection'
 import ContactSection from '@/sections/ContactSection'
 import { draftMode } from 'next/headers'
 import getMetadata from 'helpers/getMetadata'
+import { ClientsSection } from '@/sections/ClientsSection'
 
 async function getData() {
   const { isEnabled } = draftMode()
@@ -73,12 +74,12 @@ export async function generateMetadata() {
 
 const HomePage = async () => {
   const data = await getData()
-  const allPosts = data.allPosts
+  //const allPosts = data.allPosts
   const allWorks = data.allWorks
   const pageData = data.pageData
 
   return (
-    <>
+    <div className="flex flex-col" style={{ 'row-gap': '4rem' }}>
       <IntroSection
         avatar={pageData?.metadata.avatar?.imgix_url}
         heading={pageData?.metadata.heading}
@@ -87,14 +88,15 @@ const HomePage = async () => {
       />
       <AboutMeSection bodyText={pageData?.metadata.about} />
       <ToolboxSection />
+      <ClientsSection />
       <WorksSection posts={allWorks} />
-      <PostsSection posts={allPosts} />
+      {/* <PostsSection posts={allPosts} /> */}
       <ContactSection
         heading={pageData?.metadata.contact_heading}
         bodyText={pageData?.metadata.contact_text}
         email={pageData?.metadata.socials.metadata.email}
       />
-    </>
+    </div>
   )
 }
 export const revalidate = 60

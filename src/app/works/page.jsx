@@ -1,4 +1,4 @@
-import { getAllPosts, getAllCategories, getPageBySlug } from '@/lib/cosmic'
+import { getAllCategories, getPageBySlug, getAllWorks } from '@/lib/cosmic'
 import FilteredPosts from '@/components/FilteredPosts'
 import { draftMode } from 'next/headers'
 import getMetadata from 'helpers/getMetadata'
@@ -6,7 +6,7 @@ import getMetadata from 'helpers/getMetadata'
 async function getData() {
   const { isEnabled } = draftMode()
   const [allPosts, allWorkCategories] = await Promise.all([
-    getAllPosts(isEnabled, 'works') || [],
+    getAllWorks(isEnabled) || [],
     getAllCategories('work-categories') || [],
   ])
   return {

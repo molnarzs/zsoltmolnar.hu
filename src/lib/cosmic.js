@@ -44,6 +44,25 @@ export async function getAllPosts(preview, postType, postCount) {
   }
 }
 
+export async function getAllWorks(preview, postCount) {
+  try {
+    const data = await cosmic.objects
+      .find({
+        type: 'works',
+      })
+      .props(
+        'title,slug,metadata.category,metadata.excerpt,metadata.published_date,created_at,status,metadata.client,metadata.technologies'
+      )
+      .depth(4)
+      .limit(postCount)
+      .status(preview ? 'any' : 'published')
+    return data.objects
+  } catch (error) {
+    if (is404(error)) return
+    throw error
+  }
+}
+
 export async function getAllPostsWithSlug() {
   try {
     const data = await cosmic.objects.find({
@@ -64,6 +83,7 @@ export async function getPostAndMorePosts(slug, preview) {
         slug: slug,
       })
       .props('slug,title,metadata,created_at,status')
+      .depth(2)
       .status(preview ? 'any' : 'published')
 
     const moreObjects = await cosmic.objects
@@ -124,6 +144,36 @@ export async function getSiteSettings() {
       })
       .props('metadata')
     return data.object
+  } catch (error) {
+    if (is404(error)) return
+    throw error
+  }
+}
+
+export async function getAllTechnologies(preview) {
+  try {
+    const data = await cosmic.objects
+      .find({
+        type: 'technologies',
+      })
+      .props('title,metadata.data.devicon')
+      .status(preview ? 'any' : 'published')
+    return data.objects
+  } catch (error) {
+    if (is404(error)) return
+    throw error
+  }
+}
+
+export async function getAllClients(preview) {
+  try {
+    const data = await cosmic.objects
+      .find({
+        type: 'clients',
+      })
+      .props('title,metadata.data.url,slug,metadata.client_icon.imgix_url')
+      .status(preview ? 'any' : 'published')
+    return data.objects
   } catch (error) {
     if (is404(error)) return
     throw error

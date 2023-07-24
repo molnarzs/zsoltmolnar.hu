@@ -14,6 +14,6 @@ const PostPreview = ({ title, excerpt, slug }) => {
       </h3>
       <p className="text-lg leading-relaxed mb-4">{excerpt}</p>
     </div>
-  );
+  )
 }
 export default PostPreview

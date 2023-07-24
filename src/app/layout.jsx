@@ -36,6 +36,7 @@ export const metadata = {
       'max-snippet': -1,
     },
   },
+  avatarUrl: siteSettings.metadata.blog_avatar.imgix_url,
 }
 
 export default function RootLayout({ children }) {
@@ -50,7 +51,7 @@ export default function RootLayout({ children }) {
         />
       </head>
 
-      <body>
+      <body suppressHydrationWarning={true}>
         <Providers>
           <Header />
           {isEnabled && <AlertPreview enabled={isEnabled} />}

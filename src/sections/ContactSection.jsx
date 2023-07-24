@@ -3,7 +3,7 @@ import { sanitize } from 'isomorphic-dompurify'
 
 const ContactSection = ({ heading, bodyText, email }) => {
   return (
-    <section className="group h-72 flex flex-col items-center justify-center my-32">
+    <div className="group h-72 flex flex-col items-center justify-center">
       <h3 className="text-3xl flex items-center gap-x-2 font-bold">
         <span className="bg-back-subtle p-1 rounded-full">
           <LetterIcon />
@@ -22,7 +22,7 @@ const ContactSection = ({ heading, bodyText, email }) => {
       >
         Say hello
       </a>
-    </section>
+    </div>
   )
 }
 

@@ -5,6 +5,7 @@ import AlertPreview from '@/components/AlertPreview'
 import { draftMode } from 'next/headers'
 import { notFound } from 'next/navigation'
 import getMetadata from 'helpers/getMetadata'
+import { WorkFooter } from '@/components/WorkFooter'
 
 export async function generateMetadata({ params }) {
   const [getData, socialData, siteSettings] = await Promise.all([
@@ -62,6 +63,8 @@ const SingleWork = async ({ params }) => {
   const { isEnabled } = draftMode()
   const getData = await getPostAndMorePosts(params.slug, isEnabled)
 
+  console.log(JSON.stringify(getData, null, 2))
+
   if (!getData) {
     return notFound()
   }
@@ -74,6 +77,10 @@ const SingleWork = async ({ params }) => {
         {post.status === 'draft' ? <AlertPreview preview={true} /> : undefined}
         <PostHeader post={post} />
         <PostBody content={post.metadata.content} />
+        <WorkFooter
+          technologies={post.metadata.technologies}
+          client={post.metadata.client}
+        />
       </article>
     </>
   )

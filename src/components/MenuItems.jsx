@@ -7,10 +7,10 @@ export const routes = [
     path: '/',
     label: 'Home',
   },
-  {
+  /*{
     path: '/posts',
     label: 'Posts',
-  },
+  },*/
   {
     path: '/works',
     label: 'Works',

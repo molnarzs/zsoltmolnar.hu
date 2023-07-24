@@ -1,11 +1,13 @@
 import { ToolboxIcon } from '@/configs/icons'
 import React from 'react'
 import DevIcon from '@/components/DevIcon'
-import { devIcons } from '@/configs/dev-icons'
+import { getAllTechnologies } from '@/lib/cosmic'
 
-const TechSection = () => {
+const technologies = await getAllTechnologies()
+
+const ToolboxSection = async () => {
   return (
-    <section className="py-24">
+    <div>
       <span className="flex items-center mb-8">
         <div className="bg-back-subtle p-2 mr-4 rounded-full">
           <ToolboxIcon />
@@ -13,12 +15,16 @@ const TechSection = () => {
         <h4 className="text-xl text-accent font-semibold">Toolbox</h4>
       </span>
       <ul className="grid grid-cols-2 sm:grid-cols-4 gap-6">
-        {devIcons.map(icon => (
-          <DevIcon name={icon.name} iconName={icon.iconName} key={icon.name} />
+        {technologies.map(icon => (
+          <DevIcon
+            name={icon.title}
+            iconName={icon.metadata.data.devicon}
+            key={icon.title}
+          />
         ))}
       </ul>
-    </section>
+    </div>
   )
 }
 
-export default TechSection
+export default ToolboxSection
