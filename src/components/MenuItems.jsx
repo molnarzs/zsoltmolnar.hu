@@ -15,10 +15,10 @@ export const routes = [
     path: '/works',
     label: 'Works',
   },
-  {
+  /*  {
     path: '/about',
     label: 'About',
-  },
+  },*/
 ]
 
 const MenuItems = () => {
