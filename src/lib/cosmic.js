@@ -35,7 +35,6 @@ export async function getAllPosts(preview, postType, postCount) {
         'title,slug,metadata.category,metadata.excerpt,metadata.published_date,created_at,status'
       )
       .limit(postCount)
-      .sort('-created_at')
       .status(preview ? 'any' : 'published')
     return data.objects
   } catch (error) {
