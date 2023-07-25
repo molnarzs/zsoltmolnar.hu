@@ -78,7 +78,7 @@ const HomePage = async () => {
   const pageData = data.pageData
 
   return (
-    <div className="flex flex-col" style={{ 'row-gap': '4rem' }}>
+    <div className="flex flex-col" style={{ rowGap: '4rem' }}>
       <IntroSection
         avatar={pageData?.metadata.avatar?.imgix_url}
         heading={pageData?.metadata.heading}

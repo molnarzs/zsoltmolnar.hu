@@ -72,6 +72,12 @@ const WorksPage = async () => {
       <h1 className="text-2xl md:text-3xl text-fore-primary font-bold">
         Works
       </h1>
+      <div class="my-4">
+        Some selected projects. There are many more, smaller and some more
+        significant, but this subset can span the coordinate system of my
+        experience. I will add them later, including the Large Hadron Collider,
+        medical X-Ray machine, or even locks and toys.
+      </div>
       <FilteredPosts
         posts={allPosts}
         categories={allWorkCategories}
