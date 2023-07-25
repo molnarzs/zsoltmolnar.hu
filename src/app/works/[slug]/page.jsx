@@ -63,8 +63,6 @@ const SingleWork = async ({ params }) => {
   const { isEnabled } = draftMode()
   const getData = await getPostAndMorePosts(params.slug, isEnabled)
 
-  console.log(JSON.stringify(getData, null, 2))
-
   if (!getData) {
     return notFound()
   }

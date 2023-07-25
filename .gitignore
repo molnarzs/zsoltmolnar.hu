@@ -32,3 +32,6 @@ yarn-error.log*
 # vercel
 .vercel
 .setup.sh
+.firebase
+.firebaserc
+firebase.json

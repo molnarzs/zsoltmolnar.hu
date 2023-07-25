@@ -20,7 +20,7 @@ export const ClientsSection = async () => {
         {clients.map(client => (
           <ClientTag
             key={client.slug}
-            imageUrl={client.metadata.client_icon.imgix_url}
+            imageUrl={client?.metadata?.client_icon?.imgix_url}
             name={client.title}
             clientUrl={client.metadata.data?.url}
           />

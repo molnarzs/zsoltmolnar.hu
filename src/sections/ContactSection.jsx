@@ -18,7 +18,7 @@ const ContactSection = ({ heading, bodyText, email }) => {
       />
       <a
         href={`mailto:${email}`}
-        className="text-white px-16 py-3.5 mt-8 text-xl bg-gradient-to-r from-accent to-violet-400 rounded hover:from-pink-500 hover:to-yellow-500"
+        className="text-white px-16 py-3.5 mt-8 text-xl bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
       >
         Say hello
       </a>
