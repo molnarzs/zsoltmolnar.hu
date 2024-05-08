@@ -8,7 +8,9 @@ const cosmic = createBucketClient({
   readKey: READ_KEY,
 })
 
-const is404 = error => /not found/i.test(error.message)
+const is404 = error => {
+  return /No objects found/i.test(error.message)
+}
 
 export async function getPreviewPostBySlug(slug) {
   try {
@@ -85,22 +87,27 @@ export async function getPostAndMorePosts(slug, preview) {
       .depth(2)
       .status(preview ? 'any' : 'published')
 
-    const moreObjects = await cosmic.objects
-      .find({
-        type: 'posts',
-      })
-      .props('slug,title,metadata,created_at')
-      .status(preview ? 'any' : 'published')
+    const morePosts = null
 
-    const morePosts = moreObjects.objects
-      ?.filter(({ slug: object_slug }) => object_slug !== slug)
-      .slice(0, 2)
+    try {
+      const moreObjects = await cosmic.objects
+        .find({
+          type: 'posts',
+        })
+        .props('slug,title,metadata,created_at')
+        .status(preview ? 'any' : 'published')
+
+      moreObjects.objects
+        ?.filter(({ slug: object_slug }) => object_slug !== slug)
+        .slice(0, 2)
+    } catch (error) { }
 
     return {
       post: data?.object,
       morePosts,
     }
   } catch (error) {
+    console.error(JSON.stringify(error, null, 2))
     if (is404(error)) throw error
   }
 }

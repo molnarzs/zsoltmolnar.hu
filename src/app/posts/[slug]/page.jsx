@@ -69,12 +69,10 @@ const SinglePost = async ({ params }) => {
   const post = getData.post
 
   return (
-    <>
-      <article className="border-b border-back-subtle py-8 mb-8">
-        <PostHeader post={post} />
-        <PostBody content={post.metadata.content} />
-      </article>
-    </>
+    <article className="border-b border-back-subtle py-8 mb-8">
+      <PostHeader post={post} />
+      <PostBody content={post.metadata.content} />
+    </article>
   )
 }
 export default SinglePost
