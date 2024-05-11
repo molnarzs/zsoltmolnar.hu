@@ -1,7 +1,9 @@
 import PostList from '@/components/PostList'
+import Link from 'next/link'
 import { PencilIcon } from '@/configs/icons'
+import { ForwardArrowIcon } from '@/configs/icons'
 
-const WorksSection = ({ posts }) => {
+const PostsSection = ({ posts }) => {
   return (
     <div>
       <span className="flex items-center mb-8">
@@ -11,8 +13,16 @@ const WorksSection = ({ posts }) => {
         <h4 className="text-xl text-accent font-semibold">Posts</h4>
       </span>
       <PostList allPosts={posts} postType="posts" home={true} />
+      <Link href="/posts">
+        <p className="flex items-center text-fore-subtle text-sm">
+          Read more
+          <span className="ml-2">
+            <ForwardArrowIcon />
+          </span>
+        </p>
+      </Link>
     </div>
   )
 }
 
-export default WorksSection
+export default PostsSection

@@ -11,11 +11,10 @@ label: 'Home',
 path: '/works',
 label: 'Works',
 },
-/*{
+{
 path: '/posts',
 label: 'Posts',
 },
-*/
 /*  {
 path: '/about',
 label: 'About',
